@@ -144,7 +144,86 @@ Thus, it is not needed to separately include libraries such as iostream, vector,
   // process permutation
   } while (next_permutation(permutation.begin(),permutation.end()));
 
+//21.N-Queen Problem
+  void search(int y)
+  {
+    if (y == n) 
+    {
+      count++;
+      return;
+    }
+    for (int x = 0; x < n; x++) 
+    {
+      if (col[x] || diag1[x+y] || diag2[x-y+n-1]) 
+        continue;
+      col[x] = diag1[x+y] = diag2[x-y+n-1] = 1;
+      search(y+1);
+      col[x] = diag1[x+y] = diag2[x-y+n-1] = 0;
+    }
+  }
 
+//22. Bit Manipulation
+//The bits in the representation are indexed from right to left. To convert a bit representation bk ... b2b1b0 into a number, the formula
+//bk2k +···+ b222 + b121 + b020.
 
+//23.There is a connection between the representations: a signed number −x equals an unsigned number 2n − x.
+
+//24.If a number is larger than the upper bound of the bit representation, the number
+//will overflow. In a signed representation, the next number after 2n−1 − 1 is −2n−1,
+//and in an unsigned representation, the next number after 2n − 1 is 0.
+
+  int x = 2147483647
+  cout << x << "\n"; // 2147483647
+  x++;
+  cout << x << "\n"; // -2147483648
+
+//25.And Operation The and operation x & y produces a number that has one bits in
+//positions where both x and y have one bits.
+
+  10110 (22)
+  & 11010 (26)
+  = 10010 (18) .
+
+//26.Using the and operation, we can check if a number x is even because x & 1 = 0
+// if x is even, and x & 1 = 1 if x is odd. More generally, x is divisible by 2^k exactly
+// when x & (2^k − 1) = 0.
+    
+//27.Or Operation The or operation x | y produces a number that has one bits in positions
+// where at least one of x and y have one bits.
+   10110 (22)
+  | 11010 (26)
+  = 11110 (30) .
+    
+// 28.Xor Operation The xor operation x ˆ y produces a number that has one bits in
+// positions where exactly one of x and y have one bits.
+  10110 (22)
+  ˆ 11010 (26)
+  = 01100 (12)
+
+//29.Not Operation The not operation ~x produces a number where all the bits of x have
+// been inverted. The formula ~x = −x −1 holds, for example, ~29 = −30. 
+    x = 29 00000000000000000000000000011101 ~x = −30 11111111111111111111111111100010
+ 
+// 30.Bit Shifts The left bit shift x << k appends k zero bits to the number, and the right bit
+// shift x >> k removes the k last bits from the number.
+//   For example, 14 << 2 = 56,
+// because 14 and 56 correspond to 1110 and 111000. Similarly, 49 >> 3 = 6, because
+// 49 and 6 correspond to 110001 and 110. Note that x << k corresponds to multiplying
+// x by 2^k , and x >> k corresponds to dividing x by 2^k rounded down to an integer.
+
+// 31.Bit Masks A bit mask of the form 1 << k has a one bit in position k, and all other
+// bits are zero, so we can use such masks to access single bits of numbers.
+//     In particular,
+// the kth bit of a number is one exactly when x & (1 << k) is not zero. The following
+// code prints the bit representation of an int number x:
+
+  for (int k = 31; k >= 0; k--) {
+  if (x&(1<<k)) cout << "1";
+  else cout << "0";
+  }
+
+    
+    
+    
 
 
